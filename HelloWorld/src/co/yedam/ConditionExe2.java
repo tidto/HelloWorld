@@ -21,7 +21,8 @@ public class ConditionExe2 {
 				
 			}
 			
-			
+			//end
+		
 			
 		}
 		System.out.println("end of prog.");	
