@@ -7,6 +7,6 @@ public class MainExe {
 		
 		PrintExe printExe = new PrintExe(); //생성자 호출
 		printExe.showInfo();
-		// jnhhjjjjk
+		
 	}
 }
