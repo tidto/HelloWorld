@@ -21,14 +21,32 @@ public class ConditionExe2 {
 				
 			}
 			System.out.println("end of prog.");	
-			
-			//end
+		}//if
 		
-			
-		}
+		boolean run = true;
+		while(run) {
+			System.out.println("메뉴를 선택하세요(숫자를 입력)>> ");
+			System.out.println("1.로그인 2.로그아웃 3.회원가입 4.종료");
+			String menu = scn.nextLine();
+			switch(Integer.parseInt(menu)){
+				case 1:
+					login();
+					break;
+				case 2:
+					logout();
+					break;
+				case 3:
+					signUp();
+					break;
+				default:
+					run = false;
+				}
+		}//switch
+		
 	}
 
 	//end of main();
+	
 	
 	public static void login() {
 		System.out.println("로그인메뉴입니다.");
