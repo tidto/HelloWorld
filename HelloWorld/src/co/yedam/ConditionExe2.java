@@ -21,7 +21,7 @@ public class ConditionExe2 {
 				
 			}
 			System.out.println("end of prog.");	
-		}//if
+		}//if//
 		
 		boolean run = true;
 		while(run) {
