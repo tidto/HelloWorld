@@ -11,21 +11,21 @@ public class ConditionExe2 {
 			String menu = scn.nextLine();
 						
 			if(Integer.parseInt(menu) == 1) {
-				System.out.println("로그인메뉴입니다.");break;
+				System.out.println("로그인메뉴입니다.");//break;
 			}else if(Integer.parseInt(menu) == 2) {
-				System.out.println("로그아웃메뉴입니다.");break;
+				System.out.println("로그아웃메뉴입니다.");//break;
 			}else if(Integer.parseInt(menu) == 3) {
-				System.out.println("회원가입메뉴입니다.");break;
+				System.out.println("회원가입메뉴입니다.");//break;
 			}else {
 				System.out.println("종료합니다."); break;
 				
 			}
+			System.out.println("end of prog.");	
 			
 			//end
 		
 			
 		}
-		System.out.println("end of prog.");	
 	}
 
 	//end of main();
