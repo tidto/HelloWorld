@@ -32,12 +32,24 @@ public class ArrayPracticeExe {
 				for(int i=0; i<studentNum; i++) {
 					System.out.println("scores[" + i + "] = " + scores[i]);
 				}
-				
+				//30 20 50
 			}else if(selectNo == 4) {
-				
-				
+				for(int i=0; i<studentNum; i++) {
+					if(maxScores < scores[i]) {
+						maxScores = scores[i];
+						
+					}
+					sum += scores[i];
+				}
+				avg = sum/studentNum;
+				System.out.println("최고 점수: " + sum);
+				System.out.println("평균 점수: " + avg);
+
+
 			}else if(selectNo == 5){
 				run = false;
+				System.out.println("프로그램 종료");
+
 			}
 			
 		}
