@@ -12,12 +12,20 @@ public class MainExe {
 		boolean run = true;
 		//등록 > 1학교, 2회사, 3친구
 		
+		int menu;
+		
 		while( run ) {
+			try {
+				menu = Integer.parseInt(scn.nextLine());				
+			}catch(NumberFormatException e) {
+				System.out.println("메뉴를 잘못 선택");
+				//menu =2 ;
+				continue;
+			}
 			System.out.println("1.등록 2.목록 3.수정 4.삭제 5.단건조회 6.종료");
 			System.out.print("선택> ");
-			int menu = Integer.parseInt(scn.nextLine());
 			
-			if(menu == 1) {
+			if(menu == INIT_MENU.ADD) {
 				System.out.println("1.학교 2.회사 3.친구");
 				System.out.print("선택> ");
 				int cho = Integer.parseInt(scn.nextLine());
@@ -70,6 +78,7 @@ public class MainExe {
 				break;
 			}
 		}
+		
 		if (result) {
 			
 		}
