@@ -60,5 +60,9 @@ public class Friend {
 	@Override
 	public String toString() {
 		return "이름: " + name + ", 전화번호: " + phone + ", 생년월일: " + birth + ", 키: " + height;
+<<<<<<< HEAD
 	}//
+=======
+	}
+>>>>>>> refs/remotes/origin/master
 }

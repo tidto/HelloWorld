@@ -15,6 +15,10 @@ public class Ex03 {
 			}
 		}
 		
+<<<<<<< HEAD
 		System.out.printf("최소값: %d, 최대값: %d\n",min,max);//
+=======
+		System.out.printf("최소값: %d, 최대값: %d\n",min,max);
+>>>>>>> refs/remotes/origin/master
 	}
 }

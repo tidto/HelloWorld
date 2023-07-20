@@ -10,7 +10,11 @@ public class Ex01 {
 		System.out.println("num2>>");
 		int num2 = Integer.parseInt(scn.nextLine());
 		int res = (num1 > num2) ? num1: num2;
+<<<<<<< HEAD
 		//
+=======
+		
+>>>>>>> refs/remotes/origin/master
 		System.out.println(res);
 	}
 }

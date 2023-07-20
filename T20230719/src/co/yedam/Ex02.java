@@ -24,6 +24,10 @@ public class Ex02 {
 			}
 		}
 		
+<<<<<<< HEAD
 		System.out.printf("sum2: %d, sum3: %d\n",sum2,sum3);//
+=======
+		System.out.printf("sum2: %d, sum3: %d\n",sum2,sum3);
+>>>>>>> refs/remotes/origin/master
 	}
 }

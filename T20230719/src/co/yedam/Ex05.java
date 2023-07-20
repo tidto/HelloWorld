@@ -94,5 +94,9 @@ public class Ex05 {
 			}
 		}
 		return false;
+<<<<<<< HEAD
 	}//
+=======
+	}
+>>>>>>> refs/remotes/origin/master
 }
