@@ -64,7 +64,8 @@ public class MemoManager {
 		for(int i=0; i<memoStorage.size(); i++) {
 //			System.out.println(memoStorage.get(i));
 			if(date.equals(memoStorage.get(i).getDate())) {
-				System.out.println(memoStorage.get(i));		
+				System.out.println(memoStorage.get(i));
+				continue;
 			}else {
 				System.out.println("존재하지 않는 메모...");
 				continue;
@@ -81,6 +82,7 @@ public class MemoManager {
 			if(num == memoStorage.get(i).getNo()) {
 				memoStorage.remove(i);
 				System.out.println("삭제 완료");
+				continue;
 			}else {
 				System.out.println("존재하지 않는 메모...");
 				continue;
@@ -97,6 +99,9 @@ public class MemoManager {
 		try {
 			fos = new FileOutputStream("c:/Temp/memo.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			
+			
+			
 			fos.flush();fos.close();
 			oos.flush();oos.close();
 			
@@ -111,12 +116,14 @@ public class MemoManager {
 		try {
 			fis = new FileInputStream("c:/Temp/memo.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			Memo memo = (Memo) ois.readObject();
+			
 			ois.close();
 			fis.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

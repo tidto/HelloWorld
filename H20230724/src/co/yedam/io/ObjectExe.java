@@ -22,6 +22,7 @@ public class ObjectExe {
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
 		Member mem = (Member) ois.readObject();
+		
 		ois.close();
 		fis.close();
 		

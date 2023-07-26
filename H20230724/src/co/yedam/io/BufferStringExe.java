@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-class Member implements Serializable{
+public class Member implements Serializable{
 	private String name;
 	private String addr;
 	private String phone;
