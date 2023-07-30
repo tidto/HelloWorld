@@ -19,7 +19,7 @@ public class ItemVO {
 		System.out.print(itemPieces + " ");
 		return null;
 	}
-
+//
 	public int getItemNo() {
 		return itemNo;
 	}

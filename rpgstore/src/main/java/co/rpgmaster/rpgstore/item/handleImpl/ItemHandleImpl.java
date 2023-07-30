@@ -74,7 +74,7 @@ public class ItemHandleImpl implements ItemHandle {
 //			itemvo.setItemName(itemvo.getItemName());
 //			itemvo.setItemNo(itemvo.getItemNo());
 //
-//		}
+//		}//
 
 	@Override
 	public int itemFree(ItemVO ivo) { // 아이템 단종

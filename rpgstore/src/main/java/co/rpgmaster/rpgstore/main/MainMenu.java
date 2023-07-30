@@ -17,7 +17,7 @@ public class MainMenu {
 		System.out.println(" ㄴ>  3. 아이템을 삭제한다.		  ");
 		System.out.println(" ㄴ>  4. 아이템 입고지를 작성한다.	  ");
 		System.out.println(" ㄴ>  5. 아이템 출고지를 작성한다. 	  ");
-		System.out.println(" ㄴ>  6. 아이템 출고지를 작성한다. 	  ");
+		System.out.println(" ㄴ>  6. 창고 관리를 마무리한다. 	  ");
 		System.out.println("==============================");
 
 
@@ -57,14 +57,29 @@ public class MainMenu {
 
 	private void itemAdd() {
 		ItemVO item = new ItemVO();
-		System.out.println("===새로 들일 아이템 입력===");
-		System.out.print(">> ");
-		System.out.print(">> ");
-		System.out.print(">> ");
-		System.out.print(">> ");
-		System.out.print(">> ");
+		System.out.println("======= 새로 들일 아이템 입력 =======");
+
+		System.out.print("아이템 넘버>> ");
+		System.out.print("아이템 이름>> ");
+		System.out.print("아이템 종류>> ");
+		System.out.print("가격>> ");
+		System.out.print("들일 수량>> ");
 		String id = sc.nextLine();
 		
 		
 	}
 }
+
+
+
+///////// 'o o o 아이템이 추가 되었다.' 옵션 입력 후 시간 텀 주기
+//try {
+//    System.out.println("Start..." + new Date());
+//    // delay 0.5 second
+//    //TimeUnit.MICROSECONDS.sleep(500);
+//    System.out.println("End..." + new Date());
+//
+//	
+//} catch (InterruptedException e) {
+//    System.err.format("IOException: %s%n", e);
+//}
