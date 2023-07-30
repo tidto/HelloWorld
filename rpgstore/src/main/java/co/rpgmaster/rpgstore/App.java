@@ -1,13 +1,12 @@
 package co.rpgmaster.rpgstore;
 
-/**
- * Hello world!
- *
- */
+import co.rpgmaster.rpgstore.main.MainMenu;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	MainMenu menu = new MainMenu();
+    	menu.inventoryManagement();
     }
 }
