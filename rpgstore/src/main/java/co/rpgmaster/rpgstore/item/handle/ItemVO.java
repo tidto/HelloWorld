@@ -9,17 +9,29 @@ public class ItemVO {
 	private String itemType;
 	private int itemPrice;
 	private int itemPieces;
-	
-	@Override
-	public String toString() {
-		System.out.print(itemNo + " ");
-		System.out.print(itemName + " ");
-		System.out.print(itemType + " ");
-		System.out.print(itemPrice + " ");
-		System.out.print(itemPieces + " ");
-		return null;
-	}
 //
+	public ItemVO() {
+		
+	}
+	
+	public ItemVO(int itemNo, String itemName, String itemType, int itemPrice, int itemPieces) {
+		super();
+		this.itemNo = itemNo;
+		this.itemName = itemName;
+		this.itemType = itemType;
+		this.itemPrice = itemPrice;
+		this.itemPieces = itemPieces;
+	}
+@Override
+	public String toString() {
+		return "No[" + itemNo //
+				+ "] Name[" + itemName //
+				+ "] Type[" + itemType //
+				+ "] Price[" + itemPrice + "GOLD"//
+				+ "] Pieces[" + itemPieces + "]";
+	}
+	
+	
 	public int getItemNo() {
 		return itemNo;
 	}

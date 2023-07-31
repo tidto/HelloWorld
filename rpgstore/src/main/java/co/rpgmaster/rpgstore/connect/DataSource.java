@@ -31,6 +31,7 @@ public class DataSource {
 	public Connection getConnection(){
 		try {
 			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("연동");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -38,7 +39,7 @@ public class DataSource {
 	}
 	
 	private void getProperties() {
-		String resource = "/resources/database.properties";
+		String resource = "/database.properties";
 		Properties properties = new Properties();
 		
 		InputStream inputStream = getClass().getResourceAsStream(resource);
