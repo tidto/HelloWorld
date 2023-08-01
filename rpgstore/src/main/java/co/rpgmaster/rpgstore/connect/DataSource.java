@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class DataSource {
 	private static DataSource dataSource = new DataSource();
@@ -31,7 +32,18 @@ public class DataSource {
 	public Connection getConnection(){
 		try {
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("연동");
+			try {	            
+				System.out.print("\n .    ");
+	            // MICROSECOND : delay 0.5 second
+	            TimeUnit.SECONDS.sleep(1);
+	            System.out.print(".    ");
+	            TimeUnit.SECONDS.sleep(1);
+	            System.out.println(".   \n");
+	            TimeUnit.SECONDS.sleep(1);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

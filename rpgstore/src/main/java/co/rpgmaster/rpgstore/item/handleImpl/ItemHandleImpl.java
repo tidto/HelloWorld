@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import co.rpgmaster.rpgstore.connect.DataSource;
 import co.rpgmaster.rpgstore.item.handle.ItemHandle;
 import co.rpgmaster.rpgstore.item.handle.ItemVO;
+import co.rpgmaster.rpgstore.order.shipment.OrderVO;
 
 public class ItemHandleImpl implements ItemHandle {
 	private DataSource source = DataSource.getInstance();
@@ -39,18 +40,6 @@ public class ItemHandleImpl implements ItemHandle {
 		return plus;
 	}
 
-	private void close() {
-		try {
-			if (rs != null)
-				rs.close();
-			if (psmt != null)
-				psmt.close();
-			if (connect != null)
-				connect.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 //
 	@Override
@@ -94,6 +83,7 @@ public class ItemHandleImpl implements ItemHandle {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
+				ivo = new ItemVO();
 				ivo.setItemNo(rs.getInt("item_no"));
 				ivo.setItemName(rs.getString("item_name"));
 				ivo.setItemType(rs.getString("item_type"));
@@ -110,14 +100,55 @@ public class ItemHandleImpl implements ItemHandle {
 	
 
 	@Override
-	public int itemInbound(ItemVO ivo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int itemPiecesUp (ItemVO ivo) {
+		int up = 0;
+		String sql = "UPDATE INVENTORY SET ITEM_PIECES = (ITEM_PIECES + ?) WHERE ITEM_NAME = ? , ITEM_PIECES > -1";
+		connect = source.getConnection();
+		//OrderVO orders = new OrderVO();
+		try {
+			psmt = connect.prepareStatement(sql);
+			psmt.setInt(1, ivo.getItemNo());
+			psmt.setString(2, ivo.getItemName());
+
+			up = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return up;
 	}
 
 	@Override
-	public int itemOutbound(ItemVO ivo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int itemPiecesDown(ItemVO ivo) {
+		int down = 0;
+		String sql = "UPDATE INVENTORY SET ITEM_PIECES = ITEM_PIECES - ? WHERE ITEM_NAME = ? , ITEM_PIECES > -1";
+		connect = source.getConnection();
+		//OrderVO orders = new OrderVO();
+		try {
+			psmt = connect.prepareStatement(sql);
+			psmt.setInt(1, ivo.getItemNo());
+			psmt.setString(2, ivo.getItemName());
+
+			down = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return down;
+	}
+	
+	private void close() {
+		try {
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (connect != null)
+				connect.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
