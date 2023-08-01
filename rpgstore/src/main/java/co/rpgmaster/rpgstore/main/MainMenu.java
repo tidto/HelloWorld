@@ -228,7 +228,12 @@ public class MainMenu {
 
 		item.setItemType(stock);
 		item = ih.itemStock(item);
-		System.out.println(item.toString() + "\n");
+		
+		if(item.getItemNo() != 0) {
+			System.out.println(item.toString() + "\n");
+		}else {
+			System.out.println(" 재고가 떨어졌나? 나중에 추가하도록 하자...\n");
+		}
 	}
 
 	private void inboundSetup() { // 입고내역
