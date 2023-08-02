@@ -292,14 +292,14 @@ public class MainMenu {
 
 				item.setItemName(name);
 				item.setItemPieces(outbound);
-				if (ih.itemPiecesUp(item) != 0) {
+				if (ih.itemPiecesDown(item) != 0) {
 					// 네임에 맞춰 개수 추가메소드
 					order.setOrderNo(osm.autoOrderNo());
 					order.setItemName(name);
 					order.setOrderEach(outbound);
 					order.setOrderDate(dateCheck(date));
 
-					osm.itemInbound(order);
+					osm.itemOutbound(order);
 
 					System.out.println(" 꽤나 물건이 나간듯 하다...\n");
 					break;
