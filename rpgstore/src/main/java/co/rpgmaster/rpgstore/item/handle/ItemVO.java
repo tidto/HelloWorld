@@ -24,11 +24,12 @@ public class ItemVO {
 	}
 @Override
 	public String toString() {
-		return "No[" + itemNo //
+		System.out.println( "No[" + itemNo //
 				+ "] Name[" + itemName //
 				+ "] Type[" + itemType //
 				+ "] Price[" + itemPrice + "GOLD"//
-				+ "] Pieces[" + itemPieces + "]";
+				+ "] Pieces[" + itemPieces + "]");
+		return null;
 	}
 	
 	

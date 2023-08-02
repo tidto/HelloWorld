@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import co.rpgmaster.rpgstore.connect.DataSource;
 import co.rpgmaster.rpgstore.item.handle.ItemHandle;
 import co.rpgmaster.rpgstore.item.handle.ItemVO;
-import co.rpgmaster.rpgstore.order.shipment.OrderVO;
 
 public class ItemHandleImpl implements ItemHandle {
 	private DataSource source = DataSource.getInstance();
@@ -100,9 +99,9 @@ public class ItemHandleImpl implements ItemHandle {
 	
 
 	@Override
-	public int itemPiecesUp (ItemVO ivo) {
+	public int itemPiecesUp (ItemVO ivo) { //구매
 		int up = 0;
-		String sql = "UPDATE INVENTORY SET ITEM_PIECES = (ITEM_PIECES + ?) WHERE ITEM_NAME = ? , ITEM_PIECES > -1";
+		String sql = "UPDATE INVENTORY SET ITEM_PIECES = ITEM_PIECES+? WHERE ITEM_NAME=?";
 		connect = source.getConnection();
 		//OrderVO orders = new OrderVO();
 		try {
@@ -120,15 +119,16 @@ public class ItemHandleImpl implements ItemHandle {
 	}
 
 	@Override
-	public int itemPiecesDown(ItemVO ivo) {
+	public int itemPiecesDown(ItemVO ivo) { //판매
 		int down = 0;
-		String sql = "UPDATE INVENTORY SET ITEM_PIECES = ITEM_PIECES - ? WHERE ITEM_NAME = ? , ITEM_PIECES > -1";
+		String sql = "UPDATE INVENTORY SET ITEM_PIECES = ITEM_PIECES-? WHERE ITEM_NAME=? AND ITEM_PIECES-? > -1";
 		connect = source.getConnection();
 		//OrderVO orders = new OrderVO();
 		try {
 			psmt = connect.prepareStatement(sql);
 			psmt.setInt(1, ivo.getItemNo());
 			psmt.setString(2, ivo.getItemName());
+			psmt.setInt(3, ivo.getItemNo());
 
 			down = psmt.executeUpdate();
 		} catch (SQLException e) {

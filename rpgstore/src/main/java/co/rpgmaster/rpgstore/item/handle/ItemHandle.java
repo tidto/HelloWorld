@@ -7,5 +7,4 @@ public interface ItemHandle { // CURD
 	ItemVO itemStock (ItemVO ivo);		// 아이템 재고
 	int itemPiecesUp (ItemVO ivo); 		// 피스 업
 	int itemPiecesDown (ItemVO ivo); 	// 피스 다움
-	// OrderShipment join해서 오더메이드 추가(임시)
 }
