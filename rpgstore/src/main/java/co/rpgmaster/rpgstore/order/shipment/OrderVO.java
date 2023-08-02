@@ -29,11 +29,11 @@ public class OrderVO {
 //	
 	@Override
 	public String toString() {
-		System.out.print( "Order No[" + orderNo //
-				+ "]  < " + shipping //
-				+ " >  Item No[" + itemName //
+		System.out.print( " Order No[" + orderNo //
+				+ "]    < " + shipping //
+				+ " > Item No[" + itemName //
 				+ "] Each[" + orderEach //
-				+ "] OrderDate[" + orderDate + "]");
+				+ " OrderDate[" + orderDate + "]\n");
 		return null;
 	}
 ////	

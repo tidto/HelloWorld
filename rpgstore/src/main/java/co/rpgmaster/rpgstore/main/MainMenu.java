@@ -38,6 +38,7 @@ public class MainMenu {
 			mainInventory();
 
 			int key = sc.nextInt();
+			sc.nextLine();
 			switch (key) {
 			case 1:
 				itemClassAdd();
@@ -220,21 +221,16 @@ public class MainMenu {
 		}
 	}
 
-	private void itemStock() { // 아이템 타입별 재고확인
-		ItemVO item = new ItemVO();
-		System.out.println("\n======== 타입별 아이템 조회 ========");
-		System.out.println(" ㄴ> 잡화  ㄴ> 방어구  ㄴ> 무기");
-		System.out.print(" 어떤 종류를 조회할까... ");
-		String stock = sc.nextLine();
-		sc.nextLine();
-
-		item.setItemType(stock);
-		item = ih.itemStock(item);
-
-		if (item.getItemNo() != 0) {
-			System.out.println(item.toString() + "\n");
+	private void itemStock() { // 아이템 재고확인
+		List<ItemVO> items = ih.itemStock();
+		if (!items.isEmpty()) {
+			term();
+			for (ItemVO vo : items) {
+				vo.toString();
+			}
 		} else {
 			System.out.println(" 재고가 떨어졌나? 나중에 추가하도록 하자...\n");
+
 		}
 	}
 
@@ -247,7 +243,7 @@ public class MainMenu {
 
 				System.out.print(" 아이템 이름 :: ");
 				String name = sc.nextLine();
-				sc.nextLine();
+				
 
 				System.out.print(" 입고 개수 :: ");
 				int inbound = Integer.parseInt(sc.nextLine());
@@ -287,7 +283,6 @@ public class MainMenu {
 
 				System.out.print(" 아이템 이름 :: ");
 				String name = sc.nextLine();
-				sc.nextLine();
 
 				System.out.print(" 판매 개수 :: ");
 				int outbound = Integer.parseInt(sc.nextLine());
@@ -314,6 +309,7 @@ public class MainMenu {
 				}
 			} catch (NumberFormatException e) {
 				System.out.println(" 잘못 적은듯하다. 정신 차리고 다시 작성해보자...\n");
+				break;
 			}
 		}
 	}
@@ -322,7 +318,7 @@ public class MainMenu {
 		List<OrderVO> orders = osm.orderList();
 		if (!orders.isEmpty()) {
 			System.out.println(" 들인 날 순으로 훑어보자...");
-			// term();
+			term();
 			for (OrderVO od : orders) {
 				od.toString();
 			}
@@ -339,7 +335,7 @@ public class MainMenu {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private LocalDate dateCheck(String dateString) { // 입력날짜가 없으면, 오늘날짜입력
 		LocalDate date;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");

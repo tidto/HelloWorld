@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import co.rpgmaster.rpgstore.connect.DataSource;
 import co.rpgmaster.rpgstore.item.handle.ItemHandle;
@@ -73,28 +75,30 @@ public class ItemHandleImpl implements ItemHandle {
 		return free;
 	}
 	@Override
-	public ItemVO itemStock(ItemVO ivo) { // 아이템 타입별 재고확인
-		String sql = "SELECT * FROM INVENTORY WHERE ITEM_TYPE = ? ORDER BY ITEM_NO, ITEM_PIECES"; 
+	public List<ItemVO> itemStock() { // 아이템 재고확인
+		String sql = "SELECT * FROM INVENTORY ORDER BY ITEM_NO, ITEM_PIECES"; 
+		List<ItemVO> items = new ArrayList<ItemVO>();
+		ItemVO ivo;
 		try {
 			connect = source.getConnection();
 			psmt = connect.prepareStatement(sql);
-			psmt.setString(1, ivo.getItemType());
 			rs = psmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				ivo = new ItemVO();
 				ivo.setItemNo(rs.getInt("item_no"));
 				ivo.setItemName(rs.getString("item_name"));
 				ivo.setItemType(rs.getString("item_type"));
 				ivo.setItemPrice(rs.getInt("item_price"));
 				ivo.setItemPieces(rs.getInt("item_pieces"));
+				items.add(ivo);
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return ivo;
+		return items;
 	}
 	
 
@@ -106,7 +110,7 @@ public class ItemHandleImpl implements ItemHandle {
 		//OrderVO orders = new OrderVO();
 		try {
 			psmt = connect.prepareStatement(sql);
-			psmt.setInt(1, ivo.getItemNo());
+			psmt.setInt(1, ivo.getItemPieces());
 			psmt.setString(2, ivo.getItemName());
 
 			up = psmt.executeUpdate();
@@ -126,7 +130,7 @@ public class ItemHandleImpl implements ItemHandle {
 		//OrderVO orders = new OrderVO();
 		try {
 			psmt = connect.prepareStatement(sql);
-			psmt.setInt(1, ivo.getItemNo());
+			psmt.setInt(1, ivo.getItemPieces());
 			psmt.setString(2, ivo.getItemName());
 			psmt.setInt(3, ivo.getItemNo());
 

@@ -69,7 +69,7 @@ public class OrderShipmentImpl implements OrderShipment {
 	@Override
 	public int itemOutbound(OrderVO ovo) { // 출고목록 작성
 		int out = 0;
-		String sql = "INSERT INTO SHIPPING(ORDER_NO, SHIPPING, ITEM_NAME, ORDER_EACH, ORDER_DATE) VALUES(?, ? ,? , ?, ?)";
+		String sql = "INSERT INTO SHIPPING VALUES(?, ? ,? , ?, ?)";
 		try {
 			connect = source.getConnection();
 			psmt = connect.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class OrderShipmentImpl implements OrderShipment {
 			psmt = connect.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				auto = (rs.getInt("order_no")) + 1;
+				auto = (rs.getInt("auto_od_no")) + 1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
